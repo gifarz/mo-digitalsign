@@ -1,6 +1,6 @@
 // 3rd's
 import { $fetch, type FetchOptions } from 'ofetch';
-import { useEnvironmentStore } from '~/store/sessionStorage'
+import { useEnvironmentStore } from '~/store/environment'
 // locals
 import { LoginModule } from '~/repository/modules/login';
 import {

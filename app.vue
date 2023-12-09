@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 // @ts-ignore
 import * as CryptoJS from 'crypto-js'
-import { useEnvironmentStore } from '~/store/sessionStorage'
+import { useEnvironmentStore } from '~/store/environment'
 
 const environmentStore = useEnvironmentStore();
 const config = useRuntimeConfig();

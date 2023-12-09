@@ -82,7 +82,7 @@
 
 <script setup lang="ts">
 // @ts-ignore
-import { useEnvironmentStore } from '~/store/sessionStorage'
+import { useEnvironmentStore } from '~/store/environment'
 
 const environmentStore = useEnvironmentStore();
 const isOpen = ref(false)
