@@ -77,7 +77,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const fetchOptions: FetchOptions = {
     baseURL: environment.value === 'production' ? config.public.apiBaseUrlProd : config.public.apiBaseUrlDev,
     headers: {
-      'x-Gateway-APIKey': config.public.apiKeyProd,
+      'x-Gateway-APIKey': environment.value === 'production' ? config.public.apiKeyProd : config.public.apiKeyDev,
     },
 
   };
@@ -109,7 +109,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const fetchOptions: FetchOptions = {
       baseURL: environment.value === 'production' ? config.public.apiBaseUrlProd : config.public.apiBaseUrlDev,
       headers: {
-        'x-Gateway-APIKey': config.public.apiKeyProd,
+        'x-Gateway-APIKey': environment.value === 'production' ? config.public.apiKeyProd : config.public.apiKeyDev,
       },
 
     };
