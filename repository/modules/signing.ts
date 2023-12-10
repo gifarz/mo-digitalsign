@@ -38,8 +38,6 @@ class DownloadDocumentModule extends FetchFactory<IParameter> {
           }
         };
 
-        console.log('module', orderId)
-
         return this.call(
           'POST',
           `${this.RESOURCE}`,

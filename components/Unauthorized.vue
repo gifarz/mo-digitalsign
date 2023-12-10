@@ -10,10 +10,10 @@
                     </svg>
                 </div>
             </div>
-            <h1 class="mt-5 text-[36px] font-bold text-slate-800 lg:text-[50px]">
+            <h1 class="mt-10 text-[36px] font-bold text-slate-800 lg:text-[50px]">
                 401 - UNAUTHORIZED
             </h1>
-            <p class="text-slate-600 mt-5 lg:text-lg">
+            <p class="text-slate-600 mt-10 lg:text-lg">
                 Oops something went wrong. You are not allowed!
             </p>
             <div class="p-4">

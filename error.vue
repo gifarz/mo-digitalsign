@@ -11,8 +11,8 @@
                         </svg>
                     </div>
                 </div>
-                <h1 class="mt-5 text-[36px] font-bold text-slate-800 lg:text-[50px]">404 - PAGE NOT FOUND</h1>
-                <p class="text-slate-600 mt-5 lg:text-lg">The page you are looking for doesn't exist or <br />has been
+                <h1 class="mt-10 text-[36px] font-bold text-slate-800 lg:text-[50px]">404 - PAGE NOT FOUND</h1>
+                <p class="text-slate-600 mt-10 lg:text-lg">The page you are looking for doesn't exist or <br />has been
                     removed.
                 </p>
                 <div class="p-4">

@@ -29,7 +29,7 @@ const emit = defineEmits(['credential'])
 
 watch([()=> credential.value], () => {
 
-    console.log('userlist', userList.split(',').length)
+    // console.log('userlist', userList.split(',').length)
 
     for(let i = 0; i < userList.split(',').length; i++){
 

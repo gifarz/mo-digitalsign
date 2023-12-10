@@ -72,7 +72,6 @@ onMounted(() => {
 
 const loginUser = async () => {
     isLoading.value = !isLoading.value
-    console.log('masuk', $api)
 
     await $api.login.loginUser(email.value, password.value)
         .then((res: any) => {
@@ -99,7 +98,7 @@ const loginUser = async () => {
 
             }
         })
-        .catch((err: any) => console.log(err));
+        .catch((err: any) => err);
 }
 
 const handleCloseModal = () => {

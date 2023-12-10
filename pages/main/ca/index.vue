@@ -11,7 +11,8 @@
                         Check Certificate
                         <div class="text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
+                                stroke="currentColor"
+                                class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
                         </div>
@@ -43,7 +44,8 @@
                         Renewal Certificate
                         <div class="text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
+                                stroke="currentColor"
+                                class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
                         </div>
@@ -75,7 +77,8 @@
                         Finish Reg CA By Username
                         <div class="text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
+                                stroke="currentColor"
+                                class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
                         </div>
@@ -102,7 +105,8 @@
                         Fixing Certificate
                         <div class="text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
+                                stroke="currentColor"
+                                class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
                         </div>
@@ -129,7 +133,8 @@
                         Fixing Renewal Certificate
                         <div class="text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
+                                stroke="currentColor"
+                                class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
                         </div>
@@ -156,7 +161,8 @@
                         Provision Digital Certificate
                         <div class="text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
+                                stroke="currentColor"
+                                class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
                         </div>
@@ -188,7 +194,8 @@
                         Upload KTP
                         <div class="text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
+                                stroke="currentColor"
+                                class="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
                         </div>
@@ -207,7 +214,8 @@
                         <div class="mb-4 py-2 border-b border-blue-500">
                             <input
                                 class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-black transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-black file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:shadow-te-primary focus:outline-none dark:border-blue-500 dark:text-black dark:file:bg-blue-500 dark:file:text-neutral-100 dark:focus:border-primary"
-                                type="file" placeholder="File KTP" aria-label="File KTP" accept="image/png,image/jpeg" v-on:change="onChangeFileUpload($event)">
+                                type="file" placeholder="File KTP" aria-label="File KTP" accept="image/png,image/jpeg"
+                                v-on:change="onChangeFileUpload($event)">
                         </div>
                         <button
                             class="w-full bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
@@ -252,7 +260,7 @@ const checkCertificate = async () => {
     await $api.checkCertificate.checkCertificate(email.value[0], systemId.value[0])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -264,7 +272,7 @@ const checkCertificate = async () => {
             systemId.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[0] = !isLoading.value[0]
@@ -280,7 +288,7 @@ const renewalCertificate = async () => {
     await $api.renewalCertificate.renewalCertificate(email.value[1], systemId.value[1])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -292,7 +300,7 @@ const renewalCertificate = async () => {
             systemId.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[1] = !isLoading.value[1]
@@ -307,7 +315,7 @@ const finishRegCaByUsername = async () => {
     await $api.finishRegCaByUsername.finishRegCaByUsername(username.value[0])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -318,7 +326,7 @@ const finishRegCaByUsername = async () => {
             username.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[2] = !isLoading.value[2]
@@ -333,7 +341,7 @@ const fixingCertificate = async () => {
     await $api.fixingCertificate.fixingCertificate(username.value[1])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -344,7 +352,7 @@ const fixingCertificate = async () => {
             username.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[3] = !isLoading.value[3]
@@ -359,7 +367,7 @@ const fixingRenewalCertificate = async () => {
     await $api.fixingRenewalCertificate.fixingRenewalCertificate(username.value[2])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -370,7 +378,7 @@ const fixingRenewalCertificate = async () => {
             username.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[4] = !isLoading.value[4]
@@ -385,7 +393,7 @@ const provisionDigitalCertificate = async () => {
     await $api.provisionDigitalCertificate.provisionDigitalCertificate(email.value[2], systemId.value[2])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -397,7 +405,7 @@ const provisionDigitalCertificate = async () => {
             systemId.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[5] = !isLoading.value[5]
@@ -412,7 +420,7 @@ const uploadKtp = async () => {
     await $api.uploadKTP.uploadKtp(email.value[3], systemId.value[3], ktp.value[0])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -425,7 +433,7 @@ const uploadKtp = async () => {
             ktp.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[6] = !isLoading.value[6]
@@ -443,15 +451,15 @@ const onChangeFileUpload = (e: any) => {
     let base64 = ''
     reader.readAsDataURL(e.target.files[0])
 
-    reader.onload = function(){
-        
+    reader.onload = function () {
+
         base64 = reader.result as string
 
         ktp.value[0] = base64.split(',')[1] //BASE64 KTP
     }
     reader.onerror = function (error) {
-        console.log('Error: ', error);
-   };
+        // console.log('Error: ', error);
+    };
 }
 
 

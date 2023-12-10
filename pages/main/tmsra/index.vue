@@ -119,12 +119,12 @@ systemId.value = toRaw(systemId.value)
 const addUserEnroll = async () => {
 
     isLoading.value[0] = !isLoading.value[0]
-    console.log('$api', $api)
+    // console.log('$api', $api)
 
     await $api.addUserEnroll.addUserEnroll(email.value[0], systemId.value[0])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -136,7 +136,7 @@ const addUserEnroll = async () => {
             systemId.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[0] = !isLoading.value[0]
@@ -147,12 +147,12 @@ const addUserEnroll = async () => {
 const retrieveCertInfo = async () => {
 
     isLoading.value[1] = !isLoading.value[1]
-    console.log('$api', $api)
+    // console.log('$api', $api)
 
     await $api.retrieveCertInfo.retrieveCertInfo(certReqCode.value[0])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -163,7 +163,7 @@ const retrieveCertInfo = async () => {
             certReqCode.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[1] = !isLoading.value[1]
@@ -174,12 +174,12 @@ const retrieveCertInfo = async () => {
 const retrieveUserInfo = async () => {
 
     isLoading.value[2] = !isLoading.value[2]
-    console.log('$api', $api)
+    // console.log('$api', $api)
 
     await $api.retrieveUserInfo.retrieveUserInfo(username.value[0])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -190,7 +190,7 @@ const retrieveUserInfo = async () => {
             username.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[2] = !isLoading.value[2]

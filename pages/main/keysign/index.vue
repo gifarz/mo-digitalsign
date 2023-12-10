@@ -163,7 +163,7 @@ const requestKeygen = async () => {
     await $api.requestKeygen.requestKeygen(email.value[0], systemId.value[0])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -175,7 +175,7 @@ const requestKeygen = async () => {
             systemId.value = ['']
         })
         .catch((err: any) => {
-            console.log('err', err)
+            // console.log('err', err)
 
             showModal.value = !showModal.value
             isLoading.value[0] = !isLoading.value[0]
@@ -190,7 +190,7 @@ const getCertificateChain = async () => {
     await $api.getCertificateChain.getCertificateChain(email.value[1], systemId.value[1])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -202,7 +202,7 @@ const getCertificateChain = async () => {
             systemId.value = ['']
         })
         .catch((err: any) => {
-            console.log('err', err)
+            // console.log('err', err)
 
             showModal.value = !showModal.value
             isLoading.value[1] = !isLoading.value[1]
@@ -217,7 +217,7 @@ const inquiryCertificate = async () => {
     await $api.inquiryCertificate.inquiryCertificate(keyId.value[0], systemId.value[2])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -229,7 +229,7 @@ const inquiryCertificate = async () => {
             systemId.value = ['']
         })
         .catch((err: any) => {
-            console.log('err', err)
+            // console.log('err', err)
 
             showModal.value = !showModal.value
             isLoading.value[2] = !isLoading.value[2]
@@ -244,7 +244,7 @@ const inquiryCsr = async () => {
     await $api.inquiryCsr.inquiryCsr(keyId.value[1], systemId.value[3])
         .then((res: any) => {
 
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
 
@@ -256,7 +256,7 @@ const inquiryCsr = async () => {
             systemId.value = ['']
         })
         .catch((err: any) => {
-            console.log('err', err)
+            // console.log('err', err)
 
             showModal.value = !showModal.value
             isLoading.value[3] = !isLoading.value[3]

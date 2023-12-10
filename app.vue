@@ -29,7 +29,7 @@ onMounted(() => {
   environmentStore.environment = 'production'
 
   if (typeof window !== 'undefined') {
-    console.log(window.location.pathname)
+    // console.log(window.location.pathname)
 
     const urlPath = window?.location.pathname
 
@@ -44,10 +44,10 @@ onMounted(() => {
 
       if (decString == email) {
         authorized.value = true
-        console.log('authorized', true)
+        // console.log('authorized', true)
       } else {
         authorized.value = false
-        console.log('authorized', false)
+        // console.log('authorized', false)
       }
     }
   }

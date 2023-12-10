@@ -122,7 +122,7 @@ const downloadDocument = async () => {
         .then((res: any) => {
 
             toRaw(res.data.value).data.orderId = orderId.value[0].toString()
-            console.log('response', toRaw(res.data.value))
+            // console.log('response', toRaw(res.data.value))
             // console.log('response', toRaw(res.data.value).data.base64Document)
             let resultCode: any = res.data.value?.resultCode
             let resultDesc: any = res.data.value?.resultDesc
@@ -134,7 +134,7 @@ const downloadDocument = async () => {
             orderId.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[0] = !isLoading.value[0]
@@ -163,7 +163,7 @@ const sendNotificationEmail = async () => {
             orderId.value = ['']
         })
         .catch((err: any) => {
-            console.log(err)
+            // console.log(err)
 
             showModal.value = !showModal.value
             isLoading.value[1] = !isLoading.value[1]

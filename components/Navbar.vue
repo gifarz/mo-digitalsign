@@ -117,9 +117,7 @@ const logoutUser = () => {
 
 const toggle = () => {
     isToggle.value = !isToggle.value
-
-    console.log('env', env.value == 'production')
-
+    
     if (isToggle.value) {
         if (env.value == 'production') {
             environmentStore.updateEnvironment('development')
