@@ -22,3 +22,9 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(150, 153, 162);
 }
+
+/* Default Font Size */
+html {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+}

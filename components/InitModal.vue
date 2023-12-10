@@ -2,16 +2,16 @@
     <Teleport to="body">
         <div class="top-0 fixed z-50 flex justify-center w-full h-full bg-black bg-opacity-80" aria-labelledby="modal-title"
             aria-describedby="modal-body" v-if="visible">
-            <div class="flex rounded-md bg-white flex-col absolute top-[20%] max-w-[500px] w-[calc(100%-2.25rem)] max-h-96">
+            <div class="flex rounded-md bg-white flex-col absolute top-[20%] max-w-[450px] w-[calc(100%-2.25rem)] max-h-96">
                 <main class="p-2 overflow-y-auto">
                     <div class="flex items-center border-b border-cyan-500 py-2 m-2">
                         <input
-                            class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                            class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none text-sm"
                             type="text" placeholder="Secret Key" aria-label="Secret Key" v-model="credential">
                     </div>
                 </main>
                 <footer class="flex flex-shrink-0 flex-wrap items-center justify-end flex-row py-2">
-                    <span class="w-full text-center text-slate-600">Welcome to MO Digital Signature Portal</span>
+                    <span class="w-full text-center text-slate-600 text-sm">Welcome to MO Digital Signature Portal</span>
                 </footer>
             </div>
         </div>

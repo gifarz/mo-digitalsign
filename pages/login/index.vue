@@ -1,7 +1,7 @@
 <template>
     <InitModal @credential="handleCredentialEvent"/>
     <div class="h-screen flex justify-center items-center bg-[url('/assets/images/bg_login3.jpg')] bg-cover">
-        <div class="h-screen w-full py-4 sm:py-6 sm:h-auto sm:max-w-sm rounded overflow-hidden shadow-lg bg-white p-5">
+        <div class="h-screen w-full py-4 sm:p-4 sm:h-auto sm:max-w-sm rounded overflow-hidden shadow-lg bg-white">
             <img class="w-full" src="../../assets/images/login.png" alt="Logo Peruri Sign">
             <div class="py-6 text-center">
                 <span class="text-slate-600" id="typingEffect"></span>
