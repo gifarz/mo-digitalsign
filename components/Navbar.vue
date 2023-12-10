@@ -2,7 +2,7 @@
     <nav
         class="flex fixed w-full items-center justify-between px-2 md:px-6 h-16 bg-white text-gray-700 border-b border-gray-200 z-10 shadow-lg">
         <div class="flex items-center z-50">
-            <button class="mr-2" aria-label="Open Menu" @click="drawer">
+            <button class="p-2 md:mr-2 md:p-0" aria-label="Open Menu" @click="drawer">
                 <img src="../assets/images/drawer.gif" alt="Logout" class="h-auto w-8 mx-auto" />
             </button>
             <div class="hidden md:block h-auto w-30">
@@ -117,7 +117,7 @@ const logoutUser = () => {
 
 const toggle = () => {
     isToggle.value = !isToggle.value
-    
+
     if (isToggle.value) {
         if (env.value == 'production') {
             environmentStore.updateEnvironment('development')

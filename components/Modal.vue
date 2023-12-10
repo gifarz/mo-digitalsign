@@ -84,10 +84,9 @@ const jsonResponse: any = ref({})
 watch([() => props.visibility, () => props.jsonResponse], ([newVisibility, newJsonResponse]) => {
     visible.value = newVisibility
     stringResponse.value = newJsonResponse
+    
     jsonResponse.value = JSON.parse(stringResponse.value)
 
-    toRaw(jsonResponse.value)
-    
     base64String.value = "data:application/pdf;base64," + toRaw(jsonResponse.value).data?.base64Document
 })
 

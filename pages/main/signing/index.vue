@@ -121,11 +121,12 @@ const downloadDocument = async () => {
     await $api.downloadDocument.downloadDocument(orderId.value[0].toString())
         .then((res: any) => {
 
-            toRaw(res.data.value).data.orderId = orderId.value[0].toString()
-            // console.log('response', toRaw(res.data.value))
-            // console.log('response', toRaw(res.data.value).data.base64Document)
-            let resultCode: any = res.data.value?.resultCode
-            let resultDesc: any = res.data.value?.resultDesc
+            if(res.data.value.resultCode == '0'){
+                toRaw(res.data.value).data.orderId = orderId.value[0].toString()
+            }
+
+            // let resultCode: any = res.data.value?.resultCode
+            // let resultDesc: any = res.data.value?.resultDesc
 
             showModal.value = !showModal.value
             isLoading.value[0] = !isLoading.value[0]
