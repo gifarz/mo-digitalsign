@@ -19,7 +19,7 @@
 
             <div class="px-4">
                 <button
-                    class="w-full bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    class="w-full bg-transparent hover:bg-cyan-500 text-cyan-700 font-semibold hover:text-white py-2 px-4 border border-cyan-500 hover:border-transparent rounded"
                     @click="loginUser" :disabled="isLoading">
                     <span v-if="isLoading">Loading...</span>
                     <span v-else>Login</span>

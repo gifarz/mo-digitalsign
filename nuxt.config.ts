@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: "MO DIGITAL-SIGN"
+    },
+  },
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   postcss: {
