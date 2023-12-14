@@ -1,28 +1,17 @@
-# use node 16 alpine image
-FROM node:20.9.0-alpine
+# Use an official Nginx runtime as a base image
+FROM nginx:stable-alpine
 
-# create work directory in app folder
-WORKDIR /app
+# Remove the default Nginx configuration file
+RUN rm -rf /etc/nginx/conf.d/default.conf
 
-# install required packages for node image
-RUN apk --no-cache add openssh g++ make python3 git
+# Copy the Nuxt 3 application files to the Nginx server
+COPY dist/ /usr/share/nginx/html
 
-# copy over package.json files
-COPY package.json /app/
-COPY package-lock.json /app/
+# Copy your custom Nginx configuration file (if needed)
+# COPY nginx-custom.conf /etc/nginx/conf.d/
 
-# install all depencies
-RUN npm ci && npm cache clean --force
+# Expose the port on which Nginx will run
+EXPOSE 80
 
-# copy over all files to the work directory
-ADD . /app
-
-# build the project
-RUN npm run build
-
-# expose the host and port 3000 to the server
-ENV HOST 0.0.0.0
-EXPOSE 3000
-
-# run the build project with node
-ENTRYPOINT ["node", ".output/server/index.mjs"]
+# Command to run Nginx
+CMD ["nginx", "-g", "daemon off;"]
