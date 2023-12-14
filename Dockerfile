@@ -5,7 +5,7 @@ FROM nginx:stable-alpine
 RUN rm -rf /etc/nginx/conf.d/default.conf
 
 # Copy the Nuxt 3 application files to the Nginx server
-COPY dist/ /usr/share/nginx/html
+COPY .output/public/ /usr/share/nginx/html
 
 # Copy your custom Nginx configuration file (if needed)
 # COPY nginx-custom.conf /etc/nginx/conf.d/
