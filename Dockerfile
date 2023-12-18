@@ -3,7 +3,7 @@ FROM node:20.9.0-alpine AS builder
 WORKDIR /my-nuxt-app
 COPY . /my-nuxt-app
 RUN npm ci
-RUN npm build
+RUN npm run build
 EXPOSE 3000
 
 FROM node:20.9.0-alpine
