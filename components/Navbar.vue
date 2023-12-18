@@ -13,7 +13,7 @@
         <div class="flex items-center">
             <div class="flex justify-between bg-transparent">
                 <div class="flex items-center pr-2">
-                    <span class="text-black font-semibold">{{ env?.toUpperCase() }}</span>
+                    <span class="text-black">{{ env?.toUpperCase() }}</span>
                 </div>
                 <div class="flex items-center mr-2">
                     <div class="w-20 h-8 rounded-full p-1 duration-300 cursor-pointer"
