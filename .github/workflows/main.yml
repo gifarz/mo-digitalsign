@@ -15,5 +15,5 @@ jobs:
 
     - name: Build and test
       run: |
-        docker build -t mo-nuxt .
-        docker run mo-nuxt npm test
+        docker build -t mo-nuxt:1.0 .
+        docker run mo-nuxt:1.0 npm test
