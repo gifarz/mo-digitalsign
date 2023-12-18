@@ -4,4 +4,4 @@ services:
   frontend:
     image: mo-nuxt:1.0
     ports:
-      - "3000:3000"
+      - "3003:3000"
