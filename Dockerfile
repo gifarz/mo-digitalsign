@@ -2,13 +2,13 @@
 FROM node:20.9.0-alpine AS builder
 WORKDIR /my-nuxt-app
 COPY . /my-nuxt-app
-RUN yarn ci
-RUN yarn build
+RUN npm ci
+RUN npm build
 EXPOSE 3000
 
 FROM node:20.9.0-alpine
 WORKDIR /my-nuxt-app
 COPY --from=builder /my-nuxt-app/dist ./dist
 COPY package*.json ./
-RUN yarn install --production
+RUN npm install --production
 CMD ["node", ".output/server/index.mjs"]
