@@ -29,7 +29,7 @@ FROM node:20.10.0-alpine
 WORKDIR /app
 
 # Copy only the built files from the previous stage
-COPY --from=builder /app/.nuxt .nuxt
+COPY --from=builder /app/.output .output
 COPY --from=builder /app/node_modules node_modules
 COPY --from=builder /app/package*.json ./
 
@@ -37,4 +37,4 @@ COPY --from=builder /app/package*.json ./
 EXPOSE 3000
 
 # Start the Nuxt app
-CMD ["nuxt", "start"]
+CMD ["node", ".output/server/index.mjs"]
