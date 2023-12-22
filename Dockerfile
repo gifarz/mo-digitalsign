@@ -37,4 +37,4 @@ COPY --from=builder /app/package*.json ./
 EXPOSE 3000
 
 # Start the Nuxt app
-CMD ["npm", "start"]
+CMD ["nuxt", "start"]
