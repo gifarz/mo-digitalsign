@@ -1,13 +1,5 @@
-# # multi-stage build
-# FROM node:20.10.0-alpine AS builder
-# WORKDIR /my-nuxt-app
-# COPY . /my-nuxt-app
-# RUN npm ci
-# RUN npm run build
-# EXPOSE 3000
-
 # Stage 1: Build the application
-FROM node:20.10.0-alpine AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -24,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Create a smaller image with only the necessary artifacts
-FROM node:20.10.0-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
