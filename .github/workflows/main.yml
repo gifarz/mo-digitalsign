@@ -22,21 +22,29 @@ jobs:
 
       - name: Check if Docker image exists on Docker Hub
         run: |
-          response=`curl -s https://hub.docker.com/v2/repositories/modigitalsign/`
-          echo "HTTP Status Code: $response"
+          # response=`curl -s https://hub.docker.com/v2/repositories/modigitalsign/`
+          # echo "HTTP Status Code: $response"
 
-          counted=$(echo "$response" | grep -oP '"count":\s*\K\d+')
-          echo "Count : $counted"
+          image_exist = docker manifest inspect gifarz06/modigitalsign:latest
 
-          if [ $counted -eq 1 ]; then
-            echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
-            echo "IMAGE_EXISTS: true"
-          else
+          response=$(echo "$image_exist" | grep -q "no such manifest:")
+          echo "response : $response"
+
+          # if [ $response -eq 1 ]; then
+          #   echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
+          #   echo "IMAGE_EXISTS: true"
+          # else
+          #   echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
+          #   echo "IMAGE_EXISTS: false"
+          # fi
+
+          if echo "$image_exist" | grep -q "no such manifest:"; then
             echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
             echo "IMAGE_EXISTS: false"
+          else
+            echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
+            echo "IMAGE_EXISTS: true"
           fi
-
-          echo ${{ env.IMAGE_EXISTS }}
 
       - name: Log in to Docker Hub (if using a private registry)
         if: env.IMAGE_EXISTS == 'false'
@@ -45,8 +53,8 @@ jobs:
       - name: Build and push Docker image
         if: env.IMAGE_EXISTS == 'false'
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/modigitalsign:${{ github.sha }} .
-          docker push ${{ secrets.DOCKER_USERNAME }}/modigitalsign:${{ github.sha }}
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/modigitalsign:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/modigitalsign:latest
 
       - name: Stop and remove containers using the old image
         run: |
@@ -54,4 +62,4 @@ jobs:
           docker ps -a | grep modigitalsign | awk '{print $1}' | xargs -I {} docker rm {}
 
       - name: Run containers with the updated image
-        run: docker run -d --name modigitalsign ${{ secrets.DOCKER_USERNAME }}/modigitalsign:${{ github.sha }}
+        run: docker run -d --name modigitalsign ${{ secrets.DOCKER_USERNAME }}/modigitalsign:latest
