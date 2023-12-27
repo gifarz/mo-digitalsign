@@ -26,7 +26,7 @@ jobs:
           host: ${{ secrets.F5_HOST }}
           username: ${{ secrets.F5_USERNAME }}
           password: ${{ secrets.F5_PASSWORD }}
-          # port: ${{ secrets.F5_PORT }}
+          port: ${{ secrets.SERVER_PORT }}
 
       # - name: Check if Docker image exists on the server
       #   run: |
