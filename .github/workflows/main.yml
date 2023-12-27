@@ -10,24 +10,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Cache node modules
-      uses: actions/cache@v2
-      with:
-        path: |
-          node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-    - name: Build and test
-      run: |
-        docker build -t mo-digitalsign:1.0 .
+      - name: SSH into server behind F5
+        uses: appleboy/ssh-action@v0.4.0
+        with:
+          host: ${{ secrets.F5_HOST }}
+          username: ${{ secrets.F5_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.F5_SSH_PORT }}
 
-        # Stop the existing container (ignore errors if it doesn't exist)
-        docker stop mo-digitalsign || true
+      - name: Check if Docker image exists on the server
+        run: |
+          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} -p ${{ secrets.SERVER_PORT }} "docker image inspect mo-digitalsign:1.0 > /dev/null 2>&1 || echo 'Image does not exist'"
 
-        # Remove the existing container (ignore errors if it doesn't exist)
-        docker rm mo-digitalsign || true
+        continue-on-error: true
 
-        docker run --name mo-digitalsign -p 3030:3000 -d mo-digitalsign:1.0
+      - name: Pull or build and run Docker image on the server
+        run: |
+          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} -p ${{ secrets.SERVER_PORT }} "docker pull mo-digitalsign:1.0 || (docker build -t mo-digitalsign:1.0 . && docker run -d --name mo-digitalsign mo-digitalsign:1.0)"
+
+      - name: Remove temporary Docker image
+        run: |
+          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} -p ${{ secrets.SERVER_PORT }} "docker rmi mo-digitalsign:1.0"
