@@ -21,7 +21,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Check if Docker image exists on Docker Hub
-        id: check-image
         run: |
           response=`curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/mo-digitalsign/`
           echo "HTTP Status Code: $response"
