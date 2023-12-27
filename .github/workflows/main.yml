@@ -23,7 +23,7 @@ jobs:
       - name: Check if Docker image exists on Docker Hub
         id: check-image
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/mo-digitalsign/)
+          response=curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/mo-digitalsign/
           echo "HTTP Status Code: $response"
 
           if [ $response -eq 200 ]; then
