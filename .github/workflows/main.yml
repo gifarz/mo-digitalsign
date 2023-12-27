@@ -21,7 +21,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
       - name: SSH into server behind F5
-        uses: appleboy/ssh-action@latest
+        uses: appleboy/ssh-action@v1.0.1
         with:
           host: ${{ secrets.F5_HOST }}
           username: ${{ secrets.F5_USERNAME }}
