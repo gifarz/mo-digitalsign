@@ -28,11 +28,13 @@ jobs:
 
           if [ $response -eq 200 ]; then
             echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
-            echo "HTTP Status Code: true"
+            echo "IMAGE_EXISTS: true"
           else
             echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
-            echo "HTTP Status Code: false"
+            echo "IMAGE_EXISTS: false"
           fi
+
+          echo ${{ env.IMAGE_EXISTS }}
 
         env:
           IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign
