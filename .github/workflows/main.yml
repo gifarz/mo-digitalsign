@@ -26,15 +26,14 @@ jobs:
           echo "HTTP Status Code: $response"
 
           count=$(echo "$json_response" | jq -r '.count')
+          echo "Count : $count"
 
           if [ $count -eq 1 ]; then
             echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
             echo "IMAGE_EXISTS: true"
-            image_exist=true
           else
             echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
             echo "IMAGE_EXISTS: false"
-            image_exist=false
           fi
 
         env:
