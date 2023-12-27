@@ -27,15 +27,15 @@ jobs:
           echo "HTTP Status Code: $response"
 
           if [ $response -eq 200 ]; then
-            echo "image_exists=true" >> $GITHUB_ENV
+            echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
           else
-            echo "image_exists=false" >> $GITHUB_ENV
+            echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
           fi
 
         env:
           IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign
           IMAGE_TAG: latest
-          IMAGE_EXISTS: ${{ env.image_exists }}
+          IMAGE_EXISTS: ${{ env.IMAGE_EXISTS }}
 
       - name: Log in to Docker Hub (if using a private registry)
         if: env.IMAGE_EXISTS == 'false'
