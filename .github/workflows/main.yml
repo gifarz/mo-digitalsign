@@ -22,10 +22,12 @@ jobs:
 
       - name: Check if Docker image exists on Docker Hub
         run: |
-          response=`curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/mo-digitalsign/`
+          response=`curl -s https://hub.docker.com/v2/repositories/mo-digitalsign/`
           echo "HTTP Status Code: $response"
 
-          if [ $response -eq 200 ]; then
+          count=$(echo "$json_response" | jq -r '.count')
+
+          if [ $count -eq 1 ]; then
             echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
             echo "IMAGE_EXISTS: true"
             image_exist=true
@@ -38,7 +40,6 @@ jobs:
         env:
           IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign
           IMAGE_TAG: latest
-          IMAGE_EXISTS: $image_exist
 
       - name: Log in to Docker Hub (if using a private registry)
         if: env.IMAGE_EXISTS == false
