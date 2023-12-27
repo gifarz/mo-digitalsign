@@ -25,8 +25,8 @@ jobs:
           response=`curl -s https://hub.docker.com/v2/repositories/mo-digitalsign/`
           echo "HTTP Status Code: $response"
 
-          count=$(echo "$json_response" | jq -r '.count')
-          echo "Count : $response.count"
+          count=$(echo "$json_response" | grep -o '"name": "[^"]*' | cut -d'"' -f4)
+          echo "Count : $count"
 
           if [ $count -eq 1 ]; then
             echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
@@ -36,18 +36,18 @@ jobs:
             echo "IMAGE_EXISTS: false"
           fi
 
-          echo `ENV IMAGE EXIST : ${{ env.IMAGE_EXISTS }}`
+          echo ${{ env.IMAGE_EXISTS }}
 
         env:
           IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign
           IMAGE_TAG: latest
 
       - name: Log in to Docker Hub (if using a private registry)
-        if: env.IMAGE_EXISTS == false
+        if: env.IMAGE_EXISTS == 'false'
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Build and push Docker image
-        if: env.IMAGE_EXISTS == false
+        if: env.IMAGE_EXISTS == 'false'
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }} .
           docker push ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }}
