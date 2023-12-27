@@ -26,7 +26,7 @@ jobs:
           IMAGE_NAME="mo-digitalsign"
           IMAGE_TAG="latest"
 
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/${IMAGE_NAME}/${IMAGE_TAG}/)
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/${IMAGE_NAME})
           echo "HTTP Status Code: $response"
 
           if [ $response -eq 200 ]; then
