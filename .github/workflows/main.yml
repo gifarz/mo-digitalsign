@@ -28,8 +28,10 @@ jobs:
 
           if [ $response -eq 200 ]; then
             echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
+            echo "HTTP Status Code: true"
           else
             echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
+            echo "HTTP Status Code: false"
           fi
 
         env:
