@@ -23,4 +23,11 @@ jobs:
     - name: Build and test
       run: |
         docker build -t mo-digitalsign:1.0 .
-        docker run mo-digitalsign:1.0
+
+        # Stop the existing container (ignore errors if it doesn't exist)
+        docker stop mo-digitalsign || true
+
+        # Remove the existing container (ignore errors if it doesn't exist)
+        docker rm mo-digitalsign || true
+
+        docker run --name mo-digitalsign -p 3030:3000 -d mo-digitalsign:1.0
