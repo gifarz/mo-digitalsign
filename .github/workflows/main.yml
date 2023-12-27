@@ -22,7 +22,7 @@ jobs:
 
       - name: Check if Docker image exists on Docker Hub
         run: |
-          response=`curl -s https://hub.docker.com/v2/repositories/mo-digitalsign/`
+          response=`curl -s https://hub.docker.com/v2/repositories/modigitalsign/`
           echo "HTTP Status Code: $response"
 
           counted=$(echo "$response" | grep -oP '"count":\s*\K\d+')
@@ -38,24 +38,20 @@ jobs:
 
           echo ${{ env.IMAGE_EXISTS }}
 
-        env:
-          IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign
-          IMAGE_TAG: latest
+      - name: Log in to Docker Hub (if using a private registry)
+        if: env.IMAGE_EXISTS == 'false'
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      # - name: Log in to Docker Hub (if using a private registry)
-      #   if: env.IMAGE_EXISTS == 'false'
-      #   run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: Build and push Docker image
+        if: env.IMAGE_EXISTS == 'false'
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/modigitalsign:${{ github.sha }} .
+          docker push ${{ secrets.DOCKER_USERNAME }}/modigitalsign:${{ github.sha }}
 
-      # - name: Build and push Docker image
-      #   if: env.IMAGE_EXISTS == 'false'
-      #   run: |
-      #     docker build -t ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }} .
-      #     docker push ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }}
+      - name: Stop and remove containers using the old image
+        run: |
+          docker ps -a | grep modigitalsign | awk '{print $1}' | xargs -I {} docker stop {}
+          docker ps -a | grep modigitalsign | awk '{print $1}' | xargs -I {} docker rm {}
 
-      # - name: Stop and remove containers using the old image
-      #   run: |
-      #     docker ps -a | grep mo-digitalsign | awk '{print $1}' | xargs -I {} docker stop {}
-      #     docker ps -a | grep mo-digitalsign | awk '{print $1}' | xargs -I {} docker rm {}
-
-      # - name: Run containers with the updated image
-      #   run: docker run -d --name mo-digitalsign ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }}
+      - name: Run containers with the updated image
+        run: docker run -d --name modigitalsign ${{ secrets.DOCKER_USERNAME }}/modigitalsign:${{ github.sha }}
