@@ -30,9 +30,9 @@ jobs:
           echo "HTTP Status Code: $response"
 
           if [ $response -eq 200 ]; then
-            echo "::set-output name=image_exists::true"
+            echo "image_exists=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=image_exists::false"
+            echo "image_exists=false" >> $GITHUB_ENV
           fi
 
         env:
@@ -40,11 +40,11 @@ jobs:
           IMAGE_TAG: latest
 
       - name: Log in to Docker Hub (if using a private registry)
-        if: env.image_exists == 'false'
+        if: env.IMAGE_EXISTS == 'false'
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Build and push Docker image
-        if: env.image_exists == 'false'
+        if: env.IMAGE_EXISTS == 'false'
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }} .
           docker push ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }}
