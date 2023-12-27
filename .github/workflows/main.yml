@@ -32,7 +32,7 @@ jobs:
           # response=$(echo $image_exist | grep -q "no such manifest:")
           # echo "response : $response"
 
-          if echo docker manifest inspect gifarz06/modigitalsign:latest | grep -q "no such manifest:"; then
+          if echo $(docker manifest inspect gifarz06/modigitalsign:latest) | grep -q "no such manifest:"; then
             echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
             echo "IMAGE_EXISTS: false"
           else
