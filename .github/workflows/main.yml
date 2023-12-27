@@ -37,7 +37,7 @@ jobs:
 
         env:
           IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign
-          IMAGE_TAG: tag
+          IMAGE_TAG: latest
 
       - name: Log in to Docker Hub (if using a private registry)
         if: env.IMAGE_EXISTS == 'false'
@@ -51,8 +51,8 @@ jobs:
 
       - name: Stop and remove containers using the old image
         run: |
-          docker ps -a | grep your-container-name | awk '{print $1}' | xargs -I {} docker stop {}
-          docker ps -a | grep your-container-name | awk '{print $1}' | xargs -I {} docker rm {}
+          docker ps -a | grep mo-digitalsign | awk '{print $1}' | xargs -I {} docker stop {}
+          docker ps -a | grep mo-digitalsign | awk '{print $1}' | xargs -I {} docker rm {}
 
       - name: Run containers with the updated image
-        run: docker run -d --name your-container-name ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }}
+        run: docker run -d --name mo-digitalsign ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign:${{ github.sha }}
