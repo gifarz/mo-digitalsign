@@ -38,7 +38,7 @@ jobs:
         env:
           IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/mo-digitalsign
           IMAGE_TAG: latest
-          IMAGE_EXISTS: ${{ image_exist }}
+          IMAGE_EXISTS: $image_exist
 
       - name: Log in to Docker Hub (if using a private registry)
         if: env.IMAGE_EXISTS == false
