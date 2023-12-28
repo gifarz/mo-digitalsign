@@ -25,12 +25,12 @@ jobs:
 
       - name: Output Environment Variables
         run: |
-          echo "BASE_URL_PROD=${BASE_URL_PROD}"
-          echo "API_KEY_PROD=${API_KEY_PROD}"
-          echo "BASE_URL_DEV=${BASE_URL_DEV}"
-          echo "API_KEY_DEV=${API_KEY_DEV}"
-          echo "ENC_KEY=${ENC_KEY}"
-          echo "USER_LIST=${USER_LIST}"
+          echo "BASE_URL_PROD=${secrets.BASE_URL_PROD}"
+          echo "API_KEY_PROD=${secrets.API_KEY_PROD}"
+          echo "BASE_URL_DEV=${secrets.BASE_URL_DEV}"
+          echo "API_KEY_DEV=${secrets.API_KEY_DEV}"
+          echo "ENC_KEY=${secrets.ENC_KEY}"
+          echo "USER_LIST=${secrets.USER_LIST}"
 
       # - name: Build and push Docker image
       #   env: 
