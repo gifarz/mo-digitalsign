@@ -9,6 +9,14 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Set Environment Variable
+ENV BASE_URL_PROD=$BASE_URL_PROD
+ENV API_KEY_PROD=$API_KEY_PROD
+ENV BASE_URL_DEV=$BASE_URL_DEV
+ENV API_KEY_DEV=$API_KEY_DEV
+ENV ENC_KEY=$ENC_KEY
+ENV USER_LIST=$USER_LIST
+
 # Copy the rest of the application code
 COPY . .
 
