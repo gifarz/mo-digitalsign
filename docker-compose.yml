@@ -1,7 +1,0 @@
-version: "3"
-
-services:
-  frontend:
-    image: mo-nuxt:1.0
-    ports:
-      - "3003:3000"
