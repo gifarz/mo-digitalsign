@@ -23,16 +23,16 @@ jobs:
       - name: Inspect Docker Manifest
         id: inspect
         run: |
-          echo "##[set-output name=docker_manifest;]$(docker manifest inspect gifarz06/modigitalsign:66de15917643604d26da6e9e455abc8ff451aedb)"
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+          echo "DOCKER_MANIFEST=$(docker manifest inspect gifarz06/modigitalsign:66de15917643604d26da6e9e455abc8ff451aedb)" >> $GITHUB_ENV
 
       - name: Check if Docker image exists on Docker Hub
         run: |
           # response=`curl -s https://hub.docker.com/v2/repositories/modigitalsign/`
           # echo "HTTP Status Code: $response"
 
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-
-          docker_manifest="${{ steps.inspect.outputs.docker_manifest }}"
+          docker_manifest="${{ env.DOCKER_MANIFEST }}"
           echo "docker manifest : $docker_manifest"
 
 
