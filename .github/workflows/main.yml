@@ -25,12 +25,12 @@ jobs:
 
       - name: Build and push Docker image
         env: 
-          BASE_URL_PROD=${{ secrets.BASE_URL_PROD }}
-          API_KEY_PROD=${{ secrets.API_KEY_PROD }}
-          BASE_URL_DEV=${{ secrets.BASE_URL_DEV }}
-          API_KEY_DEV=${{ secrets.API_KEY_DEV }}
-          ENC_KEY=${{ secrets.ENC_KEY }}
-          USER_LIST=${{ secrets.USER_LIST }}
+          BASE_URL_PROD:${{ secrets.BASE_URL_PROD }}
+          API_KEY_PROD:${{ secrets.API_KEY_PROD }}
+          BASE_URL_DEV:${{ secrets.BASE_URL_DEV }}
+          API_KEY_DEV:${{ secrets.API_KEY_DEV }}
+          ENC_KEY:${{ secrets.ENC_KEY }}
+          USER_LIST:${{ secrets.USER_LIST }}
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/modigitalsign:${{ github.sha }} .
           docker push ${{ secrets.DOCKER_USERNAME }}/modigitalsign:${{ github.sha }}
