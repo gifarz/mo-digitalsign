@@ -33,6 +33,21 @@ COPY --from=builder /app/.output .output
 COPY --from=builder /app/node_modules node_modules
 COPY --from=builder /app/package*.json ./
 
+ENV BASE_URL_PROD=${BASE_URL_PROD} \
+    API_KEY_PROD=${API_KEY_PROD} \
+    BASE_URL_DEV=${BASE_URL_DEV} \
+    API_KEY_DEV=${API_KEY_DEV} \
+    ENC_KEY=${ENC_KEY} \
+    USER_LIST=${USER_LIST}
+
+# Debugging: Print environment variables
+RUN echo "BASE_URL_PROD=${BASE_URL_PROD}" \
+    && echo "API_KEY_PROD=${API_KEY_PROD}" \
+    && echo "BASE_URL_DEV=${BASE_URL_DEV}" \
+    && echo "API_KEY_DEV=${API_KEY_DEV}" \
+    && echo "ENC_KEY=${ENC_KEY}" \
+    && echo "USER_LIST=${USER_LIST}"
+
 # Expose the port the app runs on
 EXPOSE 3000
 
